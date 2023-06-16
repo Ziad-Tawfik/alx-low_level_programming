@@ -3,6 +3,10 @@
 #include <time.h>
 
 /* more headers goes here */
+/*
+ * main entry point
+ * return 0 always
+ */
 int main(void)
 {
 	int n;

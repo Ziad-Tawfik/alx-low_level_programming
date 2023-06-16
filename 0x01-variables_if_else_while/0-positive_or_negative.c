@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* more headers goes here */
-/*
- * main entry point
- * return 0 always
+/**
+ *main - Entry point
+ *Return: Always 0 (Success)
  */
 int main(void)
 {

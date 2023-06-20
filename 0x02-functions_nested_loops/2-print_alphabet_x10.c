@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
+ * print_alphabet_x10 - function to print from a-z
  * print_alphabet - from a-z 10 times
- *
  * Return: Nothing.
  */
-
 void print_alphabet_x10(void)
 {
 char c;

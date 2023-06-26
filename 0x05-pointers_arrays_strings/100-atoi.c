@@ -7,7 +7,8 @@
 
 int _atoi(char *s)
 {
-	int i, int_num;
+	int i;
+	unsigned int int_num;
 	short sign, catch_it;
 
 	i = int_num = 0;

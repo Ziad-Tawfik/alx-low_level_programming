@@ -1,47 +1,47 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
- * print_buffer - a function that print buffer address
- * @b: a pointer point to buffer
- * @size: the size of the buffer
- *
- * Return: void
+ * print_buffer - Print the entire buffer w/ certain conditions
+ * @b: The buffer to print
+ * @size: The size of the buffer
  */
-
 void print_buffer(char *b, int size)
 {
-	int n, i, j, add;
+	int i, j;
 
-	n = size - 1;
-	if (size % 10 == 0)
-		size = size / 10;
+	i = 0;
+	if (size <= 0)
+		putchar('\n');
 	else
-		size = size / 10 + 1;
-	j = add = 0;
-	for (i = 0; i < size && *b != 0 && (i * 10 + j) != n - 1; i++)
 	{
-		add += j;
-		printf("%.8x: ", add);
-		for (j = 0; j < 10; )
+		while (i < size)
 		{
-			if ((i * 10 + j + 1) != n)
+			printf("%08x: ", i);
+			j = 0;
+			while (j < 10)
 			{
-				printf("%.2x%.2x ", b[i * 10 + j], b[i * 10 + j + 1]);
-				j += 2;
+				if (j % 2 == 0 && j > 0)
+					printf(" ");
+				if (j + i > size - 1)
+					printf("  ");
+				else
+					printf("%.2x", b[j + i]);
+				j++;
 			}
+			putchar(' ');
+			j = 0;
+			while (j < 10)
+			{
+				if (j + i > size - 1)
+					break;
+				if (b[j + i] >= ' ' && b[j + i] <= '~')
+					putchar(b[j + i]);
+				else
+					putchar('.');
+				j++;
+			}
+			putchar('\n');
+			i += 10;
 		}
-		for (j = 0; j < 10; j++)
-		{
-			if (b[i * 10 + j] == '\0' || b[i * 10 + j] == '\1' ||
-b[i * 10 + j] == '\2' ||
-b[i * 10 + j] == '\3' || b[i * 10 + j] == '\4' ||
-b[i * 10 + j] == '\5' || b[i * 10 + j] == '\6' ||
-b[i * 10 + j] == '\7' || b[i * 10 + j] == '\x2')
-				printf(".");
-			else
-				printf("%c", b[i * 10 + j]);
-		}
-		printf("\n");
 	}
 }

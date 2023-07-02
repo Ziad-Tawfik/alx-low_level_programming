@@ -3,7 +3,7 @@
 
 /**
 * main - entry point to print all natural numbers below 1024 summed
-* 
+*
 * Return: always 0
 */
 

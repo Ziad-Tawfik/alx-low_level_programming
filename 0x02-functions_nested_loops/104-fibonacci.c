@@ -1,27 +1,46 @@
 #include <stdio.h>
 
 /**
-* main - entry point Printing first 98 Fibonacci numbers
-* Return: always zero
+* main - print first 98 Fibonacci numbers without using long long, malloc,
+* pointers, array/tables, or structures
+* Return: 0
 */
 
 int main(void)
 {
-int i;
-unsigned long tmp1 = 1, tmp2 = 1, tmp3 = 0;
+int counter;
+unsigned long tmp1 = 1, tmp2 = 2, sum = 0;
+unsigned long a_head, a_tail, b_head, b_tail, overflow, sum_tail, sum_head;
 
-for (i = 0; i < 98; i++)
+printf("%lu, %lu, ", tmp1, tmp2);
+for (counter = 2; counter <= 91; counter++)
 {
-printf("%lu", tmp2);
-if (i < 97)
+sum = tmp1 + tmp2;
+tmp1 = tmp2;
+tmp2 = sum;
+printf("%lu, ", sum);
+}
+
+a_tail = tmp1 % 1000000000;
+a_head = tmp1 / 1000000000;
+b_tail = tmp2 % 1000000000;
+b_head = tmp2 / 1000000000;
+
+while (counter < 98)
+{
+overflow = (a_tail + b_tail) / 1000000000;
+sum_tail = (a_tail + b_tail) -(overflow * 1000000000);
+sum_head = a_head + b_head + overflow;
+printf("%lu%lu", sum_head, sum_tail);
+if (counter < 97)
 printf(", ");
 else
 printf("\n");
-tmp3 = tmp2;
-tmp2 += tmp1;
-tmp1 = tmp3;
+a_head = b_head;
+a_tail = b_tail;
+b_head = sum_head;
+b_tail = sum_tail;
+counter++;
 }
-return (0);
 }
-
 

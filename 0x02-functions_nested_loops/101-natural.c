@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
 * main : entry point to print all natural numbers below 1024 summed

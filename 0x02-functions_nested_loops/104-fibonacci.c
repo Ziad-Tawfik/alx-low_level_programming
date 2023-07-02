@@ -42,6 +42,6 @@ b_head = sum_head;
 b_tail = sum_tail;
 counter++;
 }
-return (0)
+return (0);
 }
 

@@ -1,55 +1,47 @@
 #include "main.h"
+
 /**
-* is_palindrome - a function that check the input string
-* is read from forward and backward are the same or not,
-* it call palindrome.
-* @s: a pointer that point to string
-*
-* Return: return 1 is palindrome, otherwise 0
+* compare - compare head and tail indices for match
+* @head: index starting from left of string
+* @tail: index starting from right of string, moving backwards
+* Return: 1 if palindrome, 0 if not
+*/
+
+int compare(char *head, char *tail)
+{
+
+if (head >= tail)
+return (1);
+if (*head == *tail)
+return (compare(head + 1, tail - 1));
+
+return (0);
+}
+
+/**
+* _strlen - find length of string to access last index
+* @s: string
+* Return: length
+*/
+
+int _strlen(char *s)
+{
+
+if (*s == '\0')
+return (0);
+s++;
+return (1 + (_strlen(s)));
+}
+
+/**
+* is_palindrome - check if palindrome
+* @s: string to check
+* Return: 1 if palindrome, 0 if not
 */
 
 int is_palindrome(char *s)
 {
-int len;
-char *str;
+int len = _strlen(s);
 
-str = s;
-if (!*s)
-return (1);
-len = _strlen_recursion(str);
-return (compare_str(s, 0, len - 1));
-}
-
-/**
-* _strlen_recursion - a function that returns the length of a string
-* @s: the pointer that point to string
-*
-* Return: return the length of the string
-*/
-
-int _strlen_recursion(char *s)
-{
-if (!*s)
-return (0);
-s++;
-return (1 + _strlen_recursion(s));
-}
-
-
-/**
-* compare_str - compare a string whether palindrome or not
-* @str: a pointer that point to string
-* @len: the length of the string
-* @i: the forward index of string
-*
-* Return: return 1 if forward and backward are the same, otherwise 0
-*/
-
-int compare_str(char *str, int i, int len)
-{
-if (i >= len)
-return (1);
-if (str[i] == str[len])
-return (compare_str(str, i + 1, len - 1));
-return (0);
+return (compare(s, (s + len - 1)));
 }
